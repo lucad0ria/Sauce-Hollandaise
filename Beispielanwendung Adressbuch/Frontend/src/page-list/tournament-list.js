@@ -1,12 +1,12 @@
 "use strict";
 
 import Page from "../page.js";
-import HtmlTemplate from "./page-list.html";
+import HtmlTemplate from "./tournament-list.html";
 
 /**
- * Klasse PageList: Stellt die Listenübersicht zur Verfügung
+ * Klasse TournamentList: Stellt die Listenübersicht zur Verfügung
  */
-export default class PageList extends Page {
+export default class TournamentList extends Page {
     /**
      * Konstruktor.
      *
@@ -39,7 +39,7 @@ export default class PageList extends Page {
         this._title = "Übersicht";
 
         // Platzhalter anzeigen, wenn noch keine Daten vorhanden sind
-        let data = await this._app.backend.fetch("GET", "/address");
+        let data = await this._app.backend.fetch("GET", "/tournament");
         this._emptyMessageElement = this._mainElement.querySelector(".empty-placeholder");
 
         if (data.length) {
@@ -59,10 +59,9 @@ export default class PageList extends Page {
             let html = templateHtml;
 
             html = html.replace("$ID$", dataset._id);
-            html = html.replace("$LAST_NAME$", dataset.last_name);
-            html = html.replace("$FIRST_NAME$", dataset.first_name);
-            html = html.replace("$PHONE$", dataset.phone);
-            html = html.replace("$EMAIL$", dataset.email);
+            html = html.replace("$TOURNAMENT_NAME$", dataset.tournament_name);
+            html = html.replace("$TOURNAMENT_COURT$", dataset.tournament_court);
+            html = html.replace("$DATE$", dataset.date);
 
             // Element in die Liste einfügen
             let dummyElement = document.createElement("div");
@@ -78,19 +77,19 @@ export default class PageList extends Page {
     }
 
     /**
-     * Löschen der übergebenen Adresse. Zeigt einen Popup, ob der Anwender
+     * Löschen des übergebenen Turniereintrags. Zeigt einen Popup, ob der Anwender
      * die Adresse löschen will und löscht diese dann.
      *
      * @param {Integer} id ID des zu löschenden Datensatzes
      */
     async _askDelete(id) {
         // Sicherheitsfrage zeigen
-        let answer = confirm("Soll die ausgewählte Adresse wirklich gelöscht werden?");
+        let answer = confirm("Soll das ausgewählte Turnier wirklich gelöscht werden?");
         if (!answer) return;
 
         // Datensatz löschen
         try {
-            this._app.backend.fetch("DELETE", `/address/${id}`);
+            this._app.backend.fetch("DELETE", `/tournament/${id}`);
         } catch (ex) {
             this._app.showException(ex);
             return;

@@ -1,13 +1,13 @@
 "use strict";
 
 import Page from "../page.js";
-import HtmlTemplate from "./page-edit.html";
+import HtmlTemplate from "./profile-edit.html";
 
 /**
- * Klasse PageEdit: Stellt die Seite zum Anlegen oder Bearbeiten einer Adresse
+ * Klasse ProfileEdit: Stellt die Seite zum Anlegen oder Bearbeiten eines Profils
  * zur Verfügung.
  */
-export default class PageEdit extends Page {
+export default class ProfileEdit extends Page {
     /**
      * Konstruktor.
      *
@@ -55,12 +55,12 @@ export default class PageEdit extends Page {
 
         // Bearbeiteten Datensatz laden
         if (this._editId) {
-            this._url = `/address/${this._editId}`;
+            this._url = `/profil/${this._editId}`;
             this._dataset = await this._app.backend.fetch("GET", this._url);
             this._title = `${this._dataset.first_name} ${this._dataset.last_name}`;
         } else {
-            this._url = `/address`;
-            this._title = "Adresse hinzufügen";
+            this._url = `/profil`;
+            this._title = "Profil hinzufügen";
         }
 
         // Platzhalter im HTML-Code ersetzen
