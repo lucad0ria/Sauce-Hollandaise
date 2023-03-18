@@ -1,6 +1,6 @@
 "use strict";
 
-import Page from "../tournament.js";
+import Page from "../page.js";
 import HtmlTemplate from "./tournament-edit.html";
 
 /**

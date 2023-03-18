@@ -67,9 +67,29 @@ class App {
     async _gotoList() {
         try {
             // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
-            let {default: PageList} = await import("./page-list/page-list.js");
+            let {default: ProfileList} = await import("./page-list/profile-list.js");
 
-            let page = new PageList(this);
+            let page = new ProfileList(this);
+            await page.init();
+            this._showPage(page, "list");
+        } catch (ex) {
+            this.showException(ex);
+        }
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: BookingList} = await import("./page-list/booking-list.js");
+
+            let page = new BookingList(this);
+            await page.init();
+            this._showPage(page, "list");
+        } catch (ex) {
+            this.showException(ex);
+        }
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: TournamentList} = await import("./page-list/tournament-list.js");
+
+            let page = new TournamentList(this);
             await page.init();
             this._showPage(page, "list");
         } catch (ex) {
@@ -78,15 +98,35 @@ class App {
     }
 
     /**
-     * Seite zum Anlegen einer neuen Adresse anzeigen.  Wird vom Single Page
+     * Seite zum Anlegen einer neuen Entität anzeigen.  Wird vom Single Page
      * Router aufgerufen.
      */
     async _gotoNew() {
         try {
             // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
-            let {default: PageEdit} = await import("./page-edit/page-edit.js");
+            let {default: ProfileEdit} = await import("./page-edit/profile-edit.js");
 
-            let page = new PageEdit(this);
+            let page = new ProfileEdit(this);
+            await page.init();
+            this._showPage(page, "new");
+        } catch (ex) {
+            this.showException(ex);
+        }
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: BookingEdit} = await import("./page-edit/booking-edit.js");
+
+            let page = new BookingEdit(this);
+            await page.init();
+            this._showPage(page, "new");
+        } catch (ex) {
+            this.showException(ex);
+        }
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: TournamentEdit} = await import("./page-edit/tournament-edit.js");
+
+            let page = new TournamentEdit(this);
             await page.init();
             this._showPage(page, "new");
         } catch (ex) {
@@ -95,17 +135,37 @@ class App {
     }
 
     /**
-     * Seite zum Bearbeiten einer Adresse anzeigen.  Wird vom Single Page
+     * Seite zum Bearbeiten einer Entität anzeigen.  Wird vom Single Page
      * Router aufgerufen.
      *
-     * @param {Number} id ID der zu bearbeitenden Adresse
+     * @param {Number} id ID der zu bearbeitenden Entität
      */
     async _gotoEdit(id) {
         try {
             // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
-            let {default: PageEdit} = await import("./page-edit/page-edit.js");
+            let {default: ProfileEdit} = await import("./page-edit/profile-edit.js");
 
-            let page = new PageEdit(this, id);
+            let page = new ProfileEdit(this, id);
+            await page.init();
+            this._showPage(page, "edit");
+        } catch (ex) {
+            this.showException(ex);
+        }
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: BookingEdit} = await import("./page-edit/booking-edit.js");
+
+            let page = new BookingEdit(this, id);
+            await page.init();
+            this._showPage(page, "edit");
+        } catch (ex) {
+            this.showException(ex);
+        }
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: TournamentEdit} = await import("./page-edit/tournament-edit.js");
+
+            let page = new TournamentEdit(this, id);
             await page.init();
             this._showPage(page, "edit");
         } catch (ex) {
