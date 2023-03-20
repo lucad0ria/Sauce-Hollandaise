@@ -23,6 +23,7 @@ class DatabaseFactory {
         this.database = this.client.db("golfclubbook");
 
         await this._createDemoData();
+        
     }
 
     /**

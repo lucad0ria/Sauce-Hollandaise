@@ -74,7 +74,7 @@ export default class TournamentService {
      * @return {Promise} Gespeicherte Turnierdaten oder undefined
      */
     async update(id, tournament) {
-        let oldTournaments = await this._tournaments.findOne({_id: new ObjectId(id)});
+        let oldTournament = await this._tournaments.findOne({_id: new ObjectId(id)});
         if (!oldTournament) return;
 
         let updateDoc = {

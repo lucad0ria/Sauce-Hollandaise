@@ -8,7 +8,7 @@ import "./app.css";
  * Hauptklasse App: Steuert die gesamte Anwendung
  *
  * Diese Klasse erzeugt den Single Page Router zur Navigation innerhalb
- * der Anwendung und ein Datenbankobjekt zur Verwaltung der Adressliste.
+ * der Anwendung und ein Datenbankobjekt zur Verwaltung der Liste.
  * Darüber hinaus beinhaltet sie verschiedene vom Single Page Router
  * aufgerufene Methoden, zum Umschalten der aktiven Seite.
  */

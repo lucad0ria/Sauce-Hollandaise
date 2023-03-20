@@ -75,7 +75,7 @@ export default class BookingService {
      * Aktualisierung einer Buchung, durch Überschreiben einzelner Felder
      * oder des gesamten Buchungsobjekts (ohne die ID).
      *
-     * @param {String} id ID der gesuchten Adresse
+     * @param {String} id ID der gesuchten Buchung
      * @param {[type]} booking Zu speichernde Buchungsdaten
      * @return {Promise} Gespeicherte Buchungsdaten oder undefined
      */
@@ -88,10 +88,10 @@ export default class BookingService {
         }
 
         if (booking.court) updateDoc.$set.court = booking.court;
-        if (address.equipment)  updateDoc.$set.equipment  = booking.equipment;
-        if (address.time)      updateDoc.$set.time      = booking.time;
-        if (address.name_coach)      updateDoc.$set.name_coach      = booking.name_coach;
-        if (address.member)      updateDoc.$set.member     = booking.member;
+        if (booking.equipment)  updateDoc.$set.equipment  = booking.equipment;
+        if (booking.time)      updateDoc.$set.time      = booking.time;
+        if (booking.name_coach)      updateDoc.$set.name_coach      = booking.name_coach;
+        if (booking.member)      updateDoc.$set.member     = booking.member;
 
         await this._bookings.updateOne({_id: new ObjectId(id)}, updateDoc);
         return this._bookings.findOne({_id: new ObjectId(id)});

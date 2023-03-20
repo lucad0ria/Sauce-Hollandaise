@@ -9,7 +9,7 @@ import RestifyError from "restify-errors";
  * alle notwendigen URL-Handler beim Webserver für einen einfachen REST-
  * Webservice zum Lesen und Schreiben von Buchungen.
  */
-export default class AddressController {
+export default class BookingController {
     /**
      * Konstruktor. Hier werden die URL-Handler registrert.
      *
@@ -20,7 +20,7 @@ export default class AddressController {
         this._service = new BookingService();
         this._prefix = prefix;
 
-        // Collection: Adressen
+        // Collection: Buchungen
         server.get(prefix, wrapHandler(this, this.search));
         server.post(prefix, wrapHandler(this, this.create));
 

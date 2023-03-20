@@ -78,7 +78,7 @@ export default class TournamentList extends Page {
 
     /**
      * Löschen des übergebenen Turniereintrags. Zeigt einen Popup, ob der Anwender
-     * die Adresse löschen will und löscht diese dann.
+     * das Turnier löschen will und löscht diese dann.
      *
      * @param {Integer} id ID des zu löschenden Datensatzes
      */

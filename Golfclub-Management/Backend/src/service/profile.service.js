@@ -57,8 +57,8 @@ export default class ProfileService {
     /**
      * Auslesen einer vorhandenen Profil anhand ihrer ID.
      *
-     * @param {String} id ID der gesuchten Adresse
-     * @return {Promise} Gefundene Adressdaten
+     * @param {String} id ID des gesuchten Profils
+     * @return {Promise} Gefundene Profildaten
      */
     async read(id) {
         let result = await this._profiles.findOne({_id: new ObjectId(id)});
