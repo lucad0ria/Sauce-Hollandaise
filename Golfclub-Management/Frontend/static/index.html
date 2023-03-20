@@ -2,38 +2,34 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="app.css" />
         <title>Golfclub</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Mit esbuild erzeugte Bundles aus allen JS/CSS-Dateien -->
+        <script src="app.js" type="module"></script>
+        <link rel="stylesheet" href="app.css" />
+
+        <!-- Dummy-Element für dynamisch nachgeladene CSS-Anweisungen -->
+        <style id="page-css"></style>
 
         <!-- https://pixabay.com/vectors/phone-call-telephone-651704/ -->
         <link rel="shortcut icon" href="favicon.svg" />
     </head>
     <body>
         <!-- Kopfbereich mit Tabreitern -->
-        <div class="container">
-            <h1>Golfclub</h1>
-            <nav id="app-menu">
-                <ul>
-                    <li data-page-name="profile">
-                        <a href="index-profile.html">
-                            <button>Profile</button>
-                        </a>
-                    </li>
-                    <li data-page-name="booking">
-                        <a href="index-booking.html">
-                            <button>Buchungen</button>
-                        </a>
-                    </li>
-                    <li data-page-name="tournament">
-                        <a href="index-tournament.html">
-                            <button>Turniere</button>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-       
+        <nav id="app-menu">
+            <ul>
+                <li data-page-name="list">
+                    <a href="#/">Übersicht</a>
+                </li>
+                <li data-page-name="new">
+                    <a href="#/new/">Hinzufügen</a>
+                </li>
+                <li data-page-name="edit" class="non-interactive">
+                    <a>Bearbeiten</a>
+                </li>
+            </ul>
+        </nav>
 
         <!--
             Der Inhalt der aktuellen Seite wird hier mit JavaScript
