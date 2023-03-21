@@ -81,9 +81,9 @@ export default class TournamentService {
             $set: {},
         }
 
-        if (tournament.tournament_name) updateDoc.$set.tournament_name = tournament.tournament_name;
-        if (tournament.tournament_court)      updateDoc.$set.tournament_court      = tournament.tournament_court;
-        if (tournament.date)      updateDoc.$set.date      = tournament.date;
+        if (tournament.tournament_name) updateDoc.$set.tournament_name   = tournament.tournament_name;
+        if (tournament.tournament_court) updateDoc.$set.tournament_court = tournament.tournament_court;
+        if (tournament.date)      updateDoc.$set.date                    = tournament.date;
 
         await this._tournaments.updateOne({_id: new ObjectId(id)}, updateDoc);
         return this._tournaments.findOne({_id: new ObjectId(id)});
