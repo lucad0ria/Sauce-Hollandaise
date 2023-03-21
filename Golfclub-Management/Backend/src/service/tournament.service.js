@@ -13,7 +13,7 @@ export default class TournamentService {
      * Konstruktor.
      */
     constructor() {
-        this._tournament = DatabaseFactory.database.collection("tournaments");
+        this._tournaments = DatabaseFactory.database.collection("tournaments");
     }
 
     /**
@@ -26,7 +26,7 @@ export default class TournamentService {
      * @return {Promise} Liste der gefundenen Turniere
      */
     async search(query) {
-        let cursor = this._tournament.find(query, {
+        let cursor = this._tournaments.find(query, {
             sort: {
                 tournament_name: 1,
             }
