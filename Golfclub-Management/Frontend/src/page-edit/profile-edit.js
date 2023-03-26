@@ -55,11 +55,11 @@ export default class ProfileEdit extends Page {
 
         // Bearbeiteten Datensatz laden
         if (this._editId) {
-            this._url = `/profil/${this._editId}`;
+            this._url = `/profile/${this._editId}`;
             this._dataset = await this._app.backend.fetch("GET", this._url);
             this._title = `${this._dataset.first_name} ${this._dataset.last_name}`;
         } else {
-            this._url = `/profil`;
+            this._url = `/profile`;
             this._title = "Profil hinzufügen";
         }
 

@@ -6,7 +6,7 @@ import HtmlTemplate from "./booking-list.html";
 /**
  * Klasse ProfileList: Stellt die Listenübersicht zur Verfügung
  */
-export default class ProfileList extends Page {
+export default class BookingList extends Page {
     /**
      * Konstruktor.
      *
@@ -39,7 +39,7 @@ export default class ProfileList extends Page {
         this._title = "Profil Übersicht";
 
         // Platzhalter anzeigen, wenn noch keine Daten vorhanden sind
-        let data = await this._app.backend.fetch("GET", "/profil");
+        let data = await this._app.backend.fetch("GET", "/booking");
         this._emptyMessageElement = this._mainElement.querySelector(".empty-placeholder");
 
         if (data.length) {
@@ -63,6 +63,7 @@ export default class ProfileList extends Page {
             html = html.replace("$NAME_COACH$", dataset.name_coach);
             html = html.replace("$COURT$", dataset.court);
             html = html.replace("$TIME$", dataset.time);
+            html = html.replace("$EQUIPMENT$", dataset.equipment);
 
             // Element in die Liste einfügen
             let dummyElement = document.createElement("div");
@@ -72,7 +73,7 @@ export default class ProfileList extends Page {
             olElement.appendChild(liElement);
 
             // Event Handler registrieren
-            liElement.querySelector(".action.edit").addEventListener("click", () => location.hash = `#/edit/${dataset._id}`);
+            liElement.querySelector(".action.edit").addEventListener("click", () => location.hash = `#/edit-booking/${dataset._id}`);
             liElement.querySelector(".action.delete").addEventListener("click", () => this._askDelete(dataset._id));
         }
     }

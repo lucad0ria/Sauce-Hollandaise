@@ -56,8 +56,8 @@ export default class BookingService {
             member: booking.member || ""
         };
 
-        let result = await this._bookings.insertOne(newBooking);
-        return await this._bookings.findOne({_id: result.insertedId});
+        let result = await this._booking.insertOne(newBooking);
+        return await this._booking.findOne({_id: result.insertedId});
     }
 
     /**
@@ -67,7 +67,7 @@ export default class BookingService {
      * @return {Promise} Gefundene Buchungsdaten
      */
     async read(id) {
-        let result = await this._bookings.findOne({_id: new ObjectId(id)});
+        let result = await this._booking.findOne({_id: new ObjectId(id)});
         return result;
     }
 
@@ -80,7 +80,7 @@ export default class BookingService {
      * @return {Promise} Gespeicherte Buchungsdaten oder undefined
      */
     async update(id, booking) {
-        let oldBooking = await this._bookings.findOne({_id: new ObjectId(id)});
+        let oldBooking = await this._booking.findOne({_id: new ObjectId(id)});
         if (!oldBooking) return;
 
         let updateDoc = {
@@ -93,8 +93,8 @@ export default class BookingService {
         if (booking.name_coach)      updateDoc.$set.name_coach      = booking.name_coach;
         if (booking.member)      updateDoc.$set.member     = booking.member;
 
-        await this._bookings.updateOne({_id: new ObjectId(id)}, updateDoc);
-        return this._bookings.findOne({_id: new ObjectId(id)});
+        await this._booking.updateOne({_id: new ObjectId(id)}, updateDoc);
+        return this._booking.findOne({_id: new ObjectId(id)});
     }
 
     /**
@@ -104,7 +104,7 @@ export default class BookingService {
      * @return {Promise} Anzahl der gelöschten Datensätze
      */
     async delete(id) {
-        let result = await this._bookings.deleteOne({_id: new ObjectId(id)});
+        let result = await this._booking.deleteOne({_id: new ObjectId(id)});
         return result.deletedCount;
     }
 }

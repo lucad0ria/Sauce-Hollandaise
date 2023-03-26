@@ -39,7 +39,7 @@ export default class ProfileList extends Page {
         this._title = "Profil Übersicht";
 
         // Platzhalter anzeigen, wenn noch keine Daten vorhanden sind
-        let data = await this._app.backend.fetch("GET", "/profil");
+        let data = await this._app.backend.fetch("GET", "/profile");
         this._emptyMessageElement = this._mainElement.querySelector(".empty-placeholder");
 
         if (data.length) {
@@ -72,7 +72,7 @@ export default class ProfileList extends Page {
             olElement.appendChild(liElement);
 
             // Event Handler registrieren
-            liElement.querySelector(".action.edit").addEventListener("click", () => location.hash = `#/edit/${dataset._id}`);
+            liElement.querySelector(".action.edit").addEventListener("click", () => location.hash = `#/edit-profile/${dataset._id}`);
             liElement.querySelector(".action.delete").addEventListener("click", () => this._askDelete(dataset._id));
         }
     }
@@ -90,7 +90,7 @@ export default class ProfileList extends Page {
 
         // Datensatz löschen
         try {
-            this._app.backend.fetch("DELETE", `/profil/${id}`);
+            this._app.backend.fetch("DELETE", `/profile/${id}`);
         } catch (ex) {
             this._app.showException(ex);
             return;

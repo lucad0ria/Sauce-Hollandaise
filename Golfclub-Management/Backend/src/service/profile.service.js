@@ -13,7 +13,7 @@ export default class ProfileService {
      * Konstruktor.
      */
     constructor() {
-        this._profil = DatabaseFactory.database.collection("profile");
+        this._profil = DatabaseFactory.database.collection("profiles");
     }
 
     /**
@@ -50,8 +50,8 @@ export default class ProfileService {
             date: profil.date || "",
         };
 
-        let result = await this._profiles.insertOne(newProfil);
-        return await this._profiles.findOne({_id: result.insertedId});
+        let result = await this._profil.insertOne(newProfil);
+        return await this._profil.findOne({_id: result.insertedId});
     }
 
     /**
@@ -61,7 +61,7 @@ export default class ProfileService {
      * @return {Promise} Gefundene Profildaten
      */
     async read(id) {
-        let result = await this._profiles.findOne({_id: new ObjectId(id)});
+        let result = await this._profil.findOne({_id: new ObjectId(id)});
         return result;
     }
 
@@ -74,7 +74,7 @@ export default class ProfileService {
      * @return {Promise} Gespeicherte Profildaten oder undefined
      */
     async update(id, profil) {
-        let oldProfil = await this._profiles.findOne({_id: new ObjectId(id)});
+        let oldProfil = await this._profil.findOne({_id: new ObjectId(id)});
         if (!oldProfil) return;
 
         let updateDoc = {
@@ -86,8 +86,8 @@ export default class ProfileService {
         if (profil.phone)      updateDoc.$set.phone      = profil.phone;
         if (profil.email)      updateDoc.$set.email      = profil.email;
 
-        await this._profiles.updateOne({_id: new ObjectId(id)}, updateDoc);
-        return this._profiles.findOne({_id: new ObjectId(id)});
+        await this._profil.updateOne({_id: new ObjectId(id)}, updateDoc);
+        return this._profil.findOne({_id: new ObjectId(id)});
     }
 
     /**
@@ -97,7 +97,7 @@ export default class ProfileService {
      * @return {Promise} Anzahl der gelöschten Datensätze
      */
     async delete(id) {
-        let result = await this._profiles.deleteOne({_id: new ObjectId(id)});
+        let result = await this._profil.deleteOne({_id: new ObjectId(id)});
         return result.deletedCount;
     }
 }

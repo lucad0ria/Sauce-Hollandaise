@@ -68,8 +68,8 @@ export default class BookingEdit extends Page {
         // Platzhalter im HTML-Code ersetzen
         let html = this._mainElement.innerHTML;
         html = html.replace("$COURT$", this._dataset.court);
-        html = html.replace("$EQIPMENT$", this._dataset.equipment);
-        html = html.replace("$TIME$", this._dataset.phone);
+        html = html.replace("$EQUIPMENT$", this._dataset.equipment);
+        html = html.replace("$TIME$", this._dataset.time);
         html = html.replace("$NAME_COACH$", this._dataset.name_coach);
         html = html.replace("$MEMBER$", this._dataset.member);
         this._mainElement.innerHTML = html;
