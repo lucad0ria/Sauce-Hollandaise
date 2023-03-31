@@ -46,8 +46,8 @@ export default class ProfileService {
 
         let newProfil = {
             profil_name: profil.profil_name || "",
-            profil_court: profil.profil_court || "",
-            date: profil.date || "",
+            profil_phone: profil.profil_phone || "",
+            date: profil.email || "",
         };
 
         let result = await this._profil.insertOne(newProfil);
@@ -55,7 +55,7 @@ export default class ProfileService {
     }
 
     /**
-     * Auslesen einer vorhandenen Profil anhand ihrer ID.
+     * Auslesen eines vorhandenen Profils anhand ihrer ID.
      *
      * @param {String} id ID des gesuchten Profils
      * @return {Promise} Gefundene Profildaten

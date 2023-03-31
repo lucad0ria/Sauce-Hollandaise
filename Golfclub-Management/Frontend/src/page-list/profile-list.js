@@ -79,7 +79,7 @@ export default class ProfileList extends Page {
 
     /**
      * Löschen des übergebenen Profils. Zeigt einen Popup, ob der Anwender
-     * das Profil löschen will und löscht diese dann.
+     * das Profil löschen will und löscht dieses dann.
      *
      * @param {Integer} id ID des zu löschenden Datensatzes
      */
