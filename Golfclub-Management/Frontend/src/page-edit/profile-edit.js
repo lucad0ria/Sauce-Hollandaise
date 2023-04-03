@@ -117,6 +117,6 @@ export default class ProfileEdit extends Page {
         }
 
         // Zurück zur Übersicht
-        location.hash = "#/";
+        location.hash = "#/profiles";
     }
 };

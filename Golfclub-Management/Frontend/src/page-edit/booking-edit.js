@@ -134,6 +134,6 @@ export default class BookingEdit extends Page {
         }
 
         // Zurück zur Übersicht
-        location.hash = "#/";
+        location.hash = "#/bookings";
     }
 };

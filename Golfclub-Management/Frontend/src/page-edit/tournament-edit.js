@@ -107,6 +107,6 @@ export default class TournamentEdit extends Page {
         }
 
         // Zurück zur Übersicht
-        location.hash = "#/";
+        location.hash = "#/tournaments";
     }
 };
