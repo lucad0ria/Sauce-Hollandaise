@@ -45,9 +45,10 @@ export default class ProfileService {
         profil = profil || {};
 
         let newProfil = {
-            profil_name: profil.profil_name || "",
-            profil_phone: profil.profil_phone || "",
-            date: profil.email || "",
+            first_name: profil.first_name || "",
+            last_name: profil.last_name || "",
+            phone: profil.phone || "",
+            email: profil.email || "",
         };
 
         let result = await this._profil.insertOne(newProfil);
