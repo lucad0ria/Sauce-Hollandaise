@@ -1,4 +1,4 @@
-Adressbuch: Frontend
+Golfclub: Frontend
 ====================
 
 Inhaltsverzeichnis
